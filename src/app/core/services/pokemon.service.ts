@@ -5,13 +5,14 @@ import { PokemonResults } from '../../interfaces/pokemon';
 import { environment } from './../../../environments/environment.development';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PokemonService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getPokemonList(): Observable<PokemonResults> {
-    return this.http.get<PokemonResults>(`${environment.apiUrlBase}pokemon?limit=10&offset=0`);
+    return this.http.get<PokemonResults>(
+      `${environment.apiUrlBase}pokemon?limits=20&offset=0`,
+    );
   }
 }
